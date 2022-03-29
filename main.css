@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200&display=swap');
+
 :root {
     --keyboard-key-font-size: 0.6rem;
 }
@@ -5,21 +7,19 @@
 * {
     padding: 0;
     margin: 0;
+    font-family: 'Poppins', sans-serif;
 }
 
-#text {
-    width: 68vw;
-}
 
 #detail {
     width: 63vw;
     padding: 5px;
-    border-radius: 0 18px 0 18px;
-    -moz-border-radius: 0 18px 0 18px;
-    -webkit-border-radius: 0 18px 0 18px;
-    border: 0 solid #000000;
-    background-color: #71D4FE;
-    overflow: hidden;
+    border-radius: 10px;
+    background-color: rgb(244 , 241,254);
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin: 5px 55px 5px 5px;
+    height: 100px;
 }
 
 .body-light {
@@ -90,13 +90,9 @@
     justify-content: center;
     border-radius: 3px;
     background: rgb(214, 214, 214);
-    box-shadow: 0 0 10px #9521f3, 0 0 40px #c600ee, 0 0 80px #f704f7;
+
     color: black;
     cursor: pointer;
-}
-
-.key:hover {
-    box-shadow: 0 0 11px rgba(33, 33, 33, .2);
 }
 
 .key-dark {
@@ -218,20 +214,18 @@
 }
 
 .capsLock-on {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: gold;
+    background-color: darkgreen !important;
 }
 
-.capsLock-off {
+.capsLock {
     width: 10px;
     height: 10px;
     border-radius: 50%;
     background-color: whitesmoke;
 }
 
-.key.key-md.key-fn-caps {
+.key.key-md.key-fn-caps,
+.key.key-lg.key-fn-caps {
     display: flex;
     justify-content: space-around;
     flex-direction: column;
@@ -239,6 +233,7 @@
     font-size: 0.6rem;
 }
 
-.key.key-md.key-fn-caps span {
+.key.key-md.key-fn-caps span,
+.key.key-lg.key-fn-caps span {
     margin: 5px 5px 5px 10px;
 }
