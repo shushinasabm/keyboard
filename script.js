@@ -1,4 +1,10 @@
 let shift_keys = document.querySelectorAll('.shift')
+let icon = document.querySelector(".icons")
+let body = document.querySelector("body")
+let keys = document.querySelectorAll('.key')
+let detail = document.querySelector('#detail')
+let text = detail.innerText
+
 for (let shift_key of shift_keys) {
     shift_key.addEventListener('click', function (event) {
         let capslock_keys = document.querySelectorAll('.capsLock')
@@ -60,3 +66,53 @@ capslock_key.addEventListener('click', function (event) {
         }
     }
 })
+icon.addEventListener('click', function (event) {
+    icon.classList.toggle('icons-dark')
+    body.classList.toggle('body-dark')
+
+
+})
+
+for (const textElement of keys) {
+    textElement.addEventListener('click', function (event) {
+        switch (event.target.innerText) {
+            case "Enter":
+                text += "\n"
+                detail.innerHTML = text
+                break
+            case "Delete":
+                let lastFive = text.substring(text.length-5)
+                let tab =text.substring(text.length-24)
+                console.log(tab)
+                if (tab === "&nbsp;&nbsp;&nbsp;&nbsp;"){
+                    text = text.slice(0, -24)
+                }
+                else if (lastFive==='&nbsp'){
+                    text = text.slice(0, -5)
+                }else {
+                    text = text.slice(0, -1)
+                }
+                detail.innerHTML = text
+                break
+            case 'Tab':
+                text+='&nbsp;'
+                text+='&nbsp;'
+                text+='&nbsp;'
+                text+='&nbsp;'
+
+                detail.innerHTML=text
+                break
+            case 'Space':
+                text+=' '
+                detail.innerHTML=text
+                break
+
+            default :
+                text += event.target.innerText
+                detail.innerHTML = text
+
+        }
+
+
+    })
+}

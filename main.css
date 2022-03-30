@@ -22,14 +22,14 @@
     height: 100px;
 }
 
-.body-light {
+body {
     background: #c33764;
     background: -webkit-linear-gradient(to right, #1d2671, #c33764);
     background: linear-gradient(to right, #1d2671, #c33764);
 }
 
 .body-dark {
-    background-color: #272B2C;
+    background: #272B2C;
 }
 
 #root {
@@ -47,6 +47,15 @@
     display: flex;
     direction: rtl;
     justify-content: right;
+}
+
+.icons-dark {
+    width: 90%;
+    height: auto;
+    display: flex;
+    direction: rtl;
+    justify-content: right;
+    color: whitesmoke;
 }
 
 #icon {
