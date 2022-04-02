@@ -1,5 +1,5 @@
 let shift_keys = document.querySelectorAll('.shift')
-let icon = document.querySelector(".icons")
+let icon = document.getElementById("icon")
 let body = document.querySelector("body")
 let keys = document.querySelectorAll('.key')
 let detail = document.querySelector('#detail')
@@ -79,40 +79,82 @@ for (const textElement of keys) {
             case "Enter":
                 text += "\n"
                 detail.innerHTML = text
+                detail.scrollTop=detail.scrollHeight
                 break
             case "Delete":
-                let lastFive = text.substring(text.length-5)
-                let tab =text.substring(text.length-24)
+                let lastFive = text.substring(text.length - 5)
+                let tab = text.substring(text.length - 24)
+                let lastFour = text.substring(text.length - 4)
                 console.log(tab)
-                if (tab === "&nbsp;&nbsp;&nbsp;&nbsp;"){
+                if (tab === "&nbsp;&nbsp;&nbsp;&nbsp;") {
                     text = text.slice(0, -24)
-                }
-                else if (lastFive==='&nbsp'){
+                } else if (lastFive === '&nbsp') {
                     text = text.slice(0, -5)
-                }else {
+                } else if (lastFour === "<br>") {
+                    text = text.slice(0, -4)
+                } else {
                     text = text.slice(0, -1)
                 }
                 detail.innerHTML = text
                 break
             case 'Tab':
-                text+='&nbsp;'
-                text+='&nbsp;'
-                text+='&nbsp;'
-                text+='&nbsp;'
-
-                detail.innerHTML=text
+                text += '&nbsp;'
+                text += '&nbsp;'
+                text += '&nbsp;'
+                text += '&nbsp;'
+                detail.innerHTML = text
                 break
             case 'Space':
-                text+=' '
-                detail.innerHTML=text
+                text += ' '
+                detail.innerHTML = text
+                break
+            case 'Shift':
+                break
+            case 'Option':
+                break
+            case 'Control':
+                break
+            case 'fn':
+                break
+            case 'Caps Lock':
+                break
+            case 'Command':
                 break
 
             default :
                 text += event.target.innerText
                 detail.innerHTML = text
+                detail.scrollTop=detail.scrollHeight
+
 
         }
 
 
     })
 }
+let holdMouse = false
+const deleteKey = document.getElementById("Delete")
+deleteKey.addEventListener("mousedown", function (event) {
+    holdMouse = true
+    setInterval(function () {
+        if (holdMouse) {
+            let lastFive = text.substring(text.length - 5)
+            let tab = text.substring(text.length - 24)
+            let lastFour = text.substring(text.length - 4)
+            if (tab === "&nbsp;&nbsp;&nbsp;&nbsp;") {
+                text = text.slice(0, -24)
+            } else if (lastFive === '&nbsp') {
+                text = text.slice(0, -5)
+            } else if (lastFour === "<br>") {
+                text = text.slice(0, -4)
+            } else {
+                text = text.slice(0, -1)
+            }
+            detail.innerHTML = text
+        }
+    }, 500)
+})
+deleteKey.addEventListener("mouseup", function (event) {
+    holdMouse = false
+})
+

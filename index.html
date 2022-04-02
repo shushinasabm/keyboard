@@ -6,15 +6,15 @@
     <link href="main.css" type="text/css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
     <title>Keyboard</title>
+    <link rel="icon" type="image/x-icon" href="/Media/keyboard.ico">
 </head>
 <body>
 <div id="root">
     <div class="icons">
         <i class="fa-solid fa-moon" id="icon"></i>
     </div>
-    <div id="text">
-        <h3 id="detail">
-        </h3>
+    <div>
+        <textarea placeholder="Plz type your text : " id="detail"></textarea>
     </div>
     <div id="keyboards">
         <div class="keyboard-mobile">
@@ -78,10 +78,10 @@
                 <span class="key key-xs none-letter" shift-on=")" shift-off="0">0</span>
                 <span class="key key-xs none-letter" shift-on="_" shift-off="-">_</span>
                 <span class="key key-xs none-letter" shift-on="+" shift-off="=">=</span>
-                <span class="key key-sm key-fn">Delete</span>
+                <span class="key key-sm key-fn Delete" id="Delete"><span>Delete</span></span>
             </div>
             <div class="key-row">
-                <span class="key key-sm key-fn">Tab</span>
+                <span class="key key-sm key-fn"><span>Tab</span></span>
                 <span class="key key-xs">q</span>
                 <span class="key key-xs">w</span>
                 <span class="key key-xs">e</span>
@@ -112,7 +112,7 @@
                 <span class="key key-xs">l</span>
                 <span class="key key-xs none-letter" shift-on=":" shift-off=";">;</span>
                 <span class="key key-xs none-letter" shift-on='"' shift-off="'">'</span>
-                <span class="key key-md key-fn">Enter</span>
+                <span class="key key-md key-fn"><span>Enter</span></span>
             </div>
             <div class="key-row">
                 <span class="key key-lg key-fn key-fn-caps shift">
@@ -129,19 +129,19 @@
                 <span class="key key-xs none-letter" shift-on="<" shift-off=",">,</span>
                 <span class="key key-xs none-letter" shift-on=">" shift-off=".">.</span>
                 <span class="key key-xs none-letter" shift-on="?" shift-off="/">/</span>
-                <span class="key key-lg key-fn key-fn-caps shift">
+                <span class="key key-lg key-fn key-fn-caps shift" id="right-shift">
                     <span class="capsLock"></span>
-                    <span>Shift</span>
+                    <span><span>Shift</span></span>
                 </span>
             </div>
             <div class="key-row">
-                <span class="key key-xs key-fn">fn</span>
-                <span class="key key-xs key-fn">Control</span>
-                <span class="key key-xs key-fn">Option</span>
-                <span class="key key-xs key-fn">Command</span>
+                <span class="key key-xs key-fn"><span>fn</span></span>
+                <span class="key key-xs key-fn"><span>Control</span></span>
+                <span class="key key-xs key-fn"><span>Option</span></span>
+                <span class="key key-xs key-fn"><span>Command</span></span>
                 <span class="key key-xl key-fn">&nbsp</span>
-                <span class="key key-xs key-fn">Command</span>
-                <span class="key key-xs key-fn">Option</span>
+                <span class="key key-xs key-fn"><span>Command</span></span>
+                <span class="key key-xs key-fn"><span>Option</span></span>
                 <span class="key key-xs key-fn"><-</span>
                 <span class="key key-xs key-fn">^</span>
                 <span class="key key-xs key-fn">-></span>
@@ -149,6 +149,7 @@
         </div>
     </div>
 </div>
+
 
 <script src="script.js"></script>
 </body>
