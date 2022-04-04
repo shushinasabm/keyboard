@@ -4,6 +4,9 @@ let body = document.querySelector("body")
 let keys = document.querySelectorAll('.key')
 let detail = document.querySelector('#detail')
 let text = detail.innerText
+let keyBoardMobile =document.getElementsByClassName('keyboard-mobile')[0]
+let keyBoardEmoji =document.getElementsByClassName('keyboard-emoji')[0]
+
 
 for (let shift_key of shift_keys) {
     shift_key.addEventListener('click', function (event) {
@@ -129,8 +132,6 @@ for (const textElement of keys) {
                 break
             case 's':
                 break
-            case 'return':
-                break
             case 'gl':
                 break
             case 're':
@@ -194,4 +195,33 @@ deleteKey.addEventListener("mousedown", function (event) {
 deleteKey.addEventListener("mouseup", function (event) {
     holdMouse = false
 })
+const changeKeyboardMobile = document.getElementById('change-keyboard-mobile')
+changeKeyboardMobile.addEventListener('click', function (event) {
+    console.log("keyboard mobile")
 
+    if (keyBoardMobile.style.display === "none") {
+        keyBoardMobile.style.display = "flex";
+        keyBoardEmoji.style.display='none'
+
+    } else {
+        keyBoardMobile.style.display = "none";
+        keyBoardEmoji.style.display='flex'
+        keyBoardEmoji.style.flexDirection='column'
+
+    }
+})
+const changeKeyboardEmoji = document.getElementById('change-keyboard-emoji')
+changeKeyboardEmoji.addEventListener('click', function (event) {
+    console.log("keyboard emoji")
+    if (keyBoardMobile.style.display === "none") {
+        keyBoardMobile.style.display = "flex";
+        keyBoardEmoji.style.display='none'
+        keyBoardMobile.style.flexDirection='column'
+
+    } else {
+        keyBoardMobile.style.display = "none";
+        keyBoardEmoji.style.display='flex'
+        keyBoardEmoji.style.flexDirection='column'
+
+    }
+})
