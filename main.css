@@ -261,6 +261,14 @@ body {
     width: 90%;
     height: 80%;
 }
+.key.key-sm.key-fn.Delete-mobile span {
+    display: flex;
+    justify-items: start;
+    align-items: end;
+    justify-content: end;
+    width: 90%;
+    height: 80%;
+}
 
 #right-shift {
     display: flex;
@@ -268,6 +276,7 @@ body {
     align-items: end;
     justify-content: end;
 }
+
 
 @media screen and (max-width: 997px) {
     #keyboards .keyboard-desktop {

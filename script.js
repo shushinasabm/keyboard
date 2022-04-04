@@ -73,10 +73,16 @@ icon.addEventListener('click', function (event) {
 
 })
 
+
 for (const textElement of keys) {
     textElement.addEventListener('click', function (event) {
         switch (event.target.innerText) {
             case "Enter":
+                text += "\n"
+                detail.innerHTML = text
+                detail.scrollTop=detail.scrollHeight
+                break
+            case "return":
                 text += "\n"
                 detail.innerHTML = text
                 detail.scrollTop=detail.scrollHeight
@@ -119,14 +125,45 @@ for (const textElement of keys) {
             case 'Caps Lock':
                 break
             case 'Command':
+                case '123':
                 break
-
+            case 's':
+                break
+            case 'return':
+                break
+            case 'gl':
+                break
+            case 're':
+                break
+            case '<--':
+                break
+            case '^':
+                break
             default :
                 text += event.target.innerText
                 detail.innerHTML = text
                 detail.scrollTop=detail.scrollHeight
 
 
+        }
+        console.log(event.path[1].id)
+        switch (event.path[1].id) {
+            case "Delete-mobile":
+                let lastFive = text.substring(text.length - 5)
+                let tab = text.substring(text.length - 24)
+                let lastFour = text.substring(text.length - 4)
+                console.log(tab)
+                if (tab === "&nbsp;&nbsp;&nbsp;&nbsp;") {
+                    text = text.slice(0, -24)
+                } else if (lastFive === '&nbsp') {
+                    text = text.slice(0, -5)
+                } else if (lastFour === "<br>") {
+                    text = text.slice(0, -4)
+                } else {
+                    text = text.slice(0, -1)
+                }
+                detail.innerHTML = text
+                break
         }
 
 
