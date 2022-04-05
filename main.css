@@ -54,7 +54,7 @@ body {
 }
 
 .icons-dark {
-    width: 90%;
+
     height: auto;
     display: flex;
     direction: rtl;
@@ -192,8 +192,18 @@ body {
 }
 
 .keyboard-mobile .key.key-lg {
-    width: 200px;
+    width: 195px;
     height: 35px;
+}
+.keyboard-mobile .key-row {
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.keyboard-emoji{
+    display: none;
 }
 
 .key-row.row-five .key.key-sm.one {
@@ -261,6 +271,14 @@ body {
     width: 90%;
     height: 80%;
 }
+.key.key-sm.key-fn.Delete-mobile span {
+    display: flex;
+    justify-items: start;
+    align-items: end;
+    justify-content: end;
+    width: 90%;
+    height: 80%;
+}
 
 #right-shift {
     display: flex;
@@ -268,15 +286,31 @@ body {
     align-items: end;
     justify-content: end;
 }
+.key.key-sm.none-letter.emoji {
+   padding: 0 4px 0 4px;
+}
+.key.key-sm.key-fn.key-fn-caps.shift.emoji {
+    margin: 0 9px 0 0 ;
+}
+.key.key-sm.key-fn.Delete.emoji {
+    margin: 0 0 0 9px ;
+}
+
 
 @media screen and (max-width: 997px) {
     #keyboards .keyboard-desktop {
-        display: none;
+        display: none !important;
     }
 }
 
 @media screen and (min-width: 997px) {
     #keyboards .keyboard-mobile {
-        display: none;
+        display: none !important;
+    }
+}
+
+@media screen and (min-width: 997px) {
+    #keyboards .keyboard-emoji {
+        display: none !important;
     }
 }
