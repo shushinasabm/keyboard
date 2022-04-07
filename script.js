@@ -1,12 +1,12 @@
-let shift_keys = document.querySelectorAll('.shift')
 let icon = document.getElementById("icon")
-let body = document.querySelector("body")
-let keys = document.querySelectorAll('.key')
-let detail = document.querySelector('#detail')
-let text = detail.innerText
-let keyBoardMobile = document.getElementsByClassName('keyboard-mobile')[0]
-let keyBoardEmoji = document.getElementsByClassName('keyboard-emoji')[0]
+icon.addEventListener('click', function (event) {
+    icon.classList.toggle('icons-dark')
 
+    let body = document.querySelector("body")
+    body.classList.toggle('body-dark')
+})
+
+let shift_keys = document.querySelectorAll('.shift')
 for (let shift_key of shift_keys) {
     shift_key.addEventListener('click', function (event) {
         let capslock_keys = document.querySelectorAll('.capsLock')
@@ -59,7 +59,7 @@ capslock_key.addEventListener('click', function (event) {
     }
 
     if (!capslock.classList.contains('capsLock-on')) {
-        let xs_keys = document.querySelectorAll('.key-xs')
+        let xs_keys = document.getElementsByClassName('key-xs')
         for (let xs_key of xs_keys) {
             if (!xs_key.classList.contains('key-fn')) {
                 if (!xs_key.classList.contains('none-letter'))
@@ -68,169 +68,94 @@ capslock_key.addEventListener('click', function (event) {
         }
     }
 })
-icon.addEventListener('click', function (event) {
-    icon.classList.toggle('icons-dark')
-    body.classList.toggle('body-dark')
-})
 
+let keys = document.querySelectorAll('.key')
+for (let key of keys) {
+    if (!key.classList.contains('key-fn')) {
+        key.addEventListener('click', function (even) {
+            let detail = document.getElementById('detail')
 
-for (const textElement of keys) {
-    textElement.addEventListener('click', function (event) {
-        switch (event.target.innerText) {
-            case "Enter":
-                text += "\n"
-                detail.innerHTML = text
-                detail.scrollTop = detail.scrollHeight
-                break
-            case "return":
-                text += "\n"
-                detail.innerHTML = text
-                detail.scrollTop = detail.scrollHeight
-                break
-            case "Delete":
-                let input_detail = document.querySelector('#detail')
-                let input_text = input_detail.value
-                let temp_text = '';
-
-                console.log(input_text)
-                let lastFive = input_text.substring(input_text.length - 5)
-                let tab = input_text.substring(input_text.length - 24)
-                let lastFour = input_text.substring(input_text.length - 4)
-
-                console.log(lastFive)
-                console.log(tab)
-                console.log(lastFour)
-
-                if (tab === "&nbsp;&nbsp;&nbsp;&nbsp;") {
-                    temp_text = input_text.slice(0, -24)
-                } else if (lastFive === '&nbsp') {
-                    temp_text = input_text.slice(0, -5)
-                } else if (lastFour === "<br>") {
-                    temp_text = input_text.slice(0, -4)
-                } else {
-                    temp_text = input_text.slice(0, -1)
-                }
-
-                console.log(temp_text)
-                detail.value = temp_text
-                break
-            case 'Tab':
-                text += '&nbsp;'
-                text += '&nbsp;'
-                text += '&nbsp;'
-                text += '&nbsp;'
-                detail.innerHTML = text
-                break
-            case 'Space':
-                text += ' '
-                detail.innerHTML = text
-                break
-            case 'Shift':
-                break
-            case 'Option':
-                break
-            case 'Control':
-                break
-            case 'fn':
-                break
-            case 'Caps Lock':
-                break
-            case 'Command':
-            case '123':
-                break
-            case 's':
-                break
-            case 'gl':
-                break
-            case 're':
-                break
-            case '<--':
-                break
-            case '^':
-
-                break
-            default :
-                text += event.target.innerText
-                detail.value = text
-                detail.scrollTop = detail.scrollHeight
-        }
-        console.log(event.path[1].id)
-        switch (event.path[1].id) {
-            case "Delete-mobile":
-                let lastFive = text.substring(text.length - 5)
-                let tab = text.substring(text.length - 24)
-                let lastFour = text.substring(text.length - 4)
-                console.log(tab)
-                if (tab === "&nbsp;&nbsp;&nbsp;&nbsp;") {
-                    text = text.slice(0, -24)
-                } else if (lastFive === '&nbsp') {
-                    text = text.slice(0, -5)
-                } else if (lastFour === "<br>") {
-                    text = text.slice(0, -4)
-                } else {
-                    text = text.slice(0, -1)
-                }
-                detail.innerHTML = text
-                break
-        }
-    })
+            if (key.innerText === 'Tab') {
+                detail.value += '\u00A0'
+                detail.value += '\u00A0'
+                detail.value += '\u00A0'
+                detail.value += '\u00A0'
+            } else if (key.innerText === '&nbsp;')
+                detail.value += '\u00A0'
+            else
+                detail.value += key.innerText
+        })
+    }
 }
 
-let holdMouse = false
-const deleteKey = document.getElementById("Delete")
-deleteKey.addEventListener("mousedown", function (event) {
-    holdMouse = true
-    setInterval(function () {
-        if (holdMouse) {
-            let lastFive = text.substring(text.length - 5)
-            let tab = text.substring(text.length - 24)
-            let lastFour = text.substring(text.length - 4)
-            if (tab === "&nbsp;&nbsp;&nbsp;&nbsp;") {
-                text = text.slice(0, -24)
-            } else if (lastFive === '&nbsp') {
-                text = text.slice(0, -5)
-            } else if (lastFour === "<br>") {
-                text = text.slice(0, -4)
-            } else {
-                text = text.slice(0, -1)
-            }
-            detail.innerHTML = text
+let delete_key = document.querySelector('.delete')
+delete_key.addEventListener('click', function (event) {
+    let detail = document.getElementById('detail')
+    let isTab = detail.value.slice(detail.value.length - 4)
+
+    if (isTab === '\u00A0\u00A0\u00A0\u00A0')
+        detail.value = detail.value.slice(0, -4)
+    else
+        detail.value = detail.value.slice(0, -1)
+})
+let enter_key = document.querySelector('.enter')
+enter_key.addEventListener('click',function () {
+    let detail = document.getElementById('detail')
+    detail.value += '\n'
+})
+
+let isHolded = false
+let deleteInterval = null
+
+delete_key.onmouseup = function (event) {
+    isHolded = false
+
+    clearInterval(deleteInterval)
+}
+
+delete_key.onmousedown = function (event) {
+    isHolded = true
+
+    deleteInterval = setInterval(function () {
+        if (isHolded) {
+            let detail = document.getElementById('detail')
+            let isTab = detail.value.slice(detail.value.length - 4)
+
+            if (isTab === '\u00A0\u00A0\u00A0\u00A0')
+                detail.value = detail.value.slice(0, -4)
+            else
+                detail.value = detail.value.slice(0, -1)
         }
-    }, 500)
-})
-deleteKey.addEventListener("mouseup", function (event) {
-    holdMouse = false
-})
+    }, 100)
+}
 
 const changeKeyboardMobile = document.getElementById('change-keyboard-mobile')
 changeKeyboardMobile.addEventListener('click', function (event) {
-    console.log("keyboard mobile")
-
     if (document.body.clientWidth <= 996) {
+        let keyBoardMobile = document.getElementsByClassName('keyboard-mobile')[0]
+        let keyBoardEmoji = document.getElementsByClassName('keyboard-emoji')[0]
+
         if (keyBoardMobile.style.display === "none") {
             keyBoardMobile.style.display = "flex";
             keyBoardEmoji.style.display = 'none'
-
         } else {
             keyBoardMobile.style.display = "none";
             keyBoardEmoji.style.display = 'flex'
             keyBoardEmoji.style.flexDirection = 'column'
-
         }
     }
 })
 
 const changeKeyboardEmoji = document.getElementById('change-keyboard-emoji')
 changeKeyboardEmoji.addEventListener('click', function (event) {
-    console.log("keyboard emoji")
-    console.log(window.screen.width)
-
     if (document.body.clientWidth <= 996) {
+        let keyBoardMobile = document.getElementsByClassName('keyboard-mobile')[0]
+        let keyBoardEmoji = document.getElementsByClassName('keyboard-emoji')[0]
+
         if (keyBoardMobile.style.display === "none") {
             keyBoardMobile.style.display = "flex";
             keyBoardEmoji.style.display = 'none'
             keyBoardMobile.style.flexDirection = 'column'
-
         } else {
             keyBoardMobile.style.display = "none";
             keyBoardEmoji.style.display = 'flex'
