@@ -54,7 +54,6 @@ body {
 }
 
 .icons-dark {
-
     height: auto;
     display: flex;
     direction: rtl;
@@ -231,6 +230,7 @@ body {
     background-color: whitesmoke;
 }
 
+
 .key.key-md.key-fn-caps,
 .key.key-lg.key-fn-caps {
     display: flex;
@@ -245,7 +245,14 @@ body {
     margin: 5px 5px 5px 10px;
 }
 
-.key.key-xs.key-fn span,
+.key.key-xs.key-fn span{
+    display: flex;
+    justify-items: end;
+    align-items: end;
+    justify-content: start;
+    width: 90%;
+    height: 80%;
+}
 .key.key-sm.key-fn span {
     display: flex;
     justify-items: end;
@@ -260,8 +267,7 @@ body {
     justify-items: start;
     align-items: start;
     justify-content: end;
-    width: 90%;
-    height: 80%;
+
 }
 
 .key.key-sm.key-fn.Delete span {
@@ -280,7 +286,14 @@ body {
     width: 90%;
     height: 80%;
 }
-
+.key.key-sm.tab {
+    display: flex;
+    justify-items: start;
+    align-items: start;
+    justify-content: end;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.5rem;
+}
 #right-shift {
     display: flex;
     justify-items: start;
